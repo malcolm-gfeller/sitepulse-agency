@@ -1,5 +1,6 @@
 import React from 'react';
 import { LinkedInIcon } from '../icons';
+import portrait from '../images/portrait.png';
 
 const Team: React.FC = () => {
   return (
@@ -16,7 +17,7 @@ const Team: React.FC = () => {
           <div className="group relative max-w-sm w-full">
             <div className="aspect-[3/4] bg-gray-900 mb-6 overflow-hidden rounded-sm border-[3px] border-white group-hover:border-brand-cyan transition-colors duration-300 relative">
               <img
-                src="../images/portrait.png"
+                src={portrait}
                 alt="Malcolm Gfeller"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />

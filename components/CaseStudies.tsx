@@ -1,6 +1,9 @@
 import React from 'react';
 import Button from './Button';
 import { ArrowRightIcon } from '../icons';
+import nexusLogo from '../images/nexus-white-logo.png';
+import ceLogo from '../images/cearchitectesa-logo.png';
+import tukassiLogo from '../images/Logo-White-Transparent.png';
 
 const CaseStudyCard = ({ 
   company, 
@@ -120,7 +123,7 @@ const CaseStudies: React.FC = () => {
             stat="Studio d'enregistrement : Site web & création de mails professionnels" 
             variant="cyan"
             link="https://nexusproduction.sitepulse.ch/"
-            logo="../images/nexus-white-logo.png"
+            logo={nexusLogo}
           />
           <CaseStudyCard 
             company="CE Architectes" 
@@ -128,7 +131,7 @@ const CaseStudies: React.FC = () => {
             stat="Solutions architecturales simples et percutantes" 
             variant="orange"
             link="https://cearchitectesa.ch/"
-            logo="../images/cearchitectesa-logo.png"
+            logo={ceLogo}
           />
           <CaseStudyCard 
             company="Tukassi" 
@@ -136,7 +139,7 @@ const CaseStudies: React.FC = () => {
             stat="Boutique en ligne & Expérience digitale sur mesure" 
             variant="purple"
             link="https://tukassi.ch/"
-            logo="../images/Logo-White-Transparent.png"
+            logo={tukassiLogo}
           />
         </div>
 
