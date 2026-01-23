@@ -94,8 +94,8 @@ const Hero: React.FC = () => {
 
                    <div className="mt-8 flex items-center justify-between border-t border-white/10 pt-6">
                       <div className="flex flex-col">
-                        <span className="text-xs text-gray-400 uppercase tracking-wider">Performance</span>
-                        <span className="text-2xl font-bold text-white">98<span className="text-brand-cyan text-lg">%</span></span>
+                         <span className="text-xs text-gray-400 uppercase tracking-wider">Performance</span>
+                         <span className="text-2xl font-bold text-white">98<span className="text-brand-cyan text-lg">%</span></span>
                       </div>
                       <div className="h-10 w-10 bg-brand-cyan rounded-full flex items-center justify-center text-black font-bold transform group-hover:scale-110 transition-transform">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>

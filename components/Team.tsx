@@ -1,4 +1,5 @@
 import React from 'react';
+import { LinkedInIcon } from '../icons';
 
 const Team: React.FC = () => {
   return (
