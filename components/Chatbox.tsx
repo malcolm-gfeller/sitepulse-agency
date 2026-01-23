@@ -7,14 +7,6 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 const SYSTEM_PROMPT = `
 You are a helpful AI assistant for SitePulse, a digital growth agency in Switzerland.
 Your goal is to answer questions about SitePulse's services, team, and projects based on the page content.
-Be professional, friendly, and concise.
-
-Context about SitePulse:
-- They provide custom web development (Ultra-fast sites).
-- They specialize in UI/UX Design.
-- They offer SEO and digital strategy.
-- They are based in Switzerland.
-- Main sections: Services (Strategy, Design, Development), Case Studies, Team, Contact.
 `;
 
 const Chatbox: React.FC = () => {
@@ -26,7 +18,8 @@ const Chatbox: React.FC = () => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   // Initialize Gemini
-  const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY || '');
+  const apiKey = (import.meta as any).env.VITE_GEMINI_API_KEY || '';
+  const genAI = new GoogleGenerativeAI(apiKey);
   const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
   const scrollToBottom = () => {
