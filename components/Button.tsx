@@ -23,13 +23,16 @@ const Button: React.FC<ButtonProps> = ({ children, variant = 'primary', classNam
   };
 
   const Component = href ? 'a' : 'button';
+  // Include onClick in props even if it's an anchor tag to support menu closing behavior
   const props = href ? { href, target: "_self", onClick } : { onClick, type };
 
   return (
     // @ts-ignore
     <Component className={`${baseStyles} ${variants[variant]} ${className}`} {...props}>
       <span>{children}</span>
-      <div className="transition-transform duration-300"> <ArrowRightIcon className="w-5 h-5 fill-current" /> </div>
+      <div className="transition-transform duration-300">
+        <ArrowRightIcon className="w-5 h-5 fill-current" />
+      </div>
     </Component>
   );
 };
