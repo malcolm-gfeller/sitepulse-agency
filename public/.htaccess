@@ -1,10 +1,19 @@
-# BEGIN SITEPULSE
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
-  RewriteRule ^index\.html$ - [L]
+  
+  # Rediriger tout vers index.html si le fichier n'existe pas
+  # (Nécessaire pour que React gère l'affichage)
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule . /index.html [L]
 </IfModule>
-# END SITEPULSE
+
+# Forcer le téléchargement des polices et images avec le bon type MIME si nécessaire
+<IfModule mod_mime.c>
+  AddType image/svg+xml .svg
+  AddType font/woff2 .woff2
+</IfModule>
+
+# Désactiver le listing des répertoires pour la sécurité
+Options -Indexes

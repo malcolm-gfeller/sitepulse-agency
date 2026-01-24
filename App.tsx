@@ -6,7 +6,8 @@ import CaseStudies from './components/CaseStudies';
 import Team from './components/Team';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import Chatbox from './components/Chatbox';
+import ChatWidget from './components/ChatWidget';
+
 
 function App() {
   const { scrollYProgress } = useScroll();
@@ -65,7 +66,8 @@ function App() {
         </motion.div>
       </main>
       <Footer />
-      <Chatbox />
+      <ChatWidget />
+
     </div>
   );
 }

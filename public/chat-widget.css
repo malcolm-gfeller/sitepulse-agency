@@ -1,0 +1,220 @@
+/* SitePulse Chat Widget Styles */
+
+:root {
+  --sp-purple: #6366f1;
+  --sp-cyan: #a6eddd;
+  --sp-black: #0a0a0b;
+  --sp-glass: rgba(10, 10, 11, 0.8);
+  --sp-border: rgba(255, 255, 255, 0.1);
+}
+
+#sitepulse-chat-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 10000;
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+
+/* Floating Trigger Button */
+#sp-chat-trigger {
+  width: 56px;
+  height: 56px;
+  border-radius: 28px;
+  background: linear-gradient(135deg, var(--sp-purple), var(--sp-cyan));
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 32px rgba(99, 102, 241, 0.3);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#sp-chat-trigger:hover {
+  transform: scale(1.1);
+}
+
+#sp-chat-trigger svg {
+  color: #000;
+  width: 24px;
+  height: 24px;
+}
+
+/* Chat Window */
+#sp-chat-window {
+  position: absolute;
+  bottom: 72px;
+  right: 0;
+  width: 360px;
+  height: 500px;
+  background: var(--sp-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--sp-border);
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  transform-origin: bottom right;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  pointer-events: none;
+}
+
+#sp-chat-window.open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: all;
+}
+
+/* Header */
+.sp-chat-header {
+  padding: 16px 20px;
+  background: linear-gradient(
+    to right,
+    rgba(99, 102, 241, 0.1),
+    rgba(166, 237, 221, 0.1)
+  );
+  border-bottom: 1px solid var(--sp-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sp-chat-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.sp-online-dot {
+  width: 8px;
+  height: 8px;
+  background: #10b981;
+  border-radius: 50%;
+  animation: sp-pulse 2s infinite;
+}
+
+@keyframes sp-pulse {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+/* Messages Area */
+#sp-chat-messages {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+}
+
+#sp-chat-messages::-webkit-scrollbar {
+  width: 4px;
+}
+
+#sp-chat-messages::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.sp-message {
+  max-width: 85%;
+  padding: 10px 14px;
+  border-radius: 18px;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: #e2e8f0;
+}
+
+.sp-message.assistant {
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--sp-border);
+  border-top-left-radius: 4px;
+}
+
+.sp-message.user {
+  align-self: flex-end;
+  background: var(--sp-purple);
+  color: #fff;
+  border-top-right-radius: 4px;
+}
+
+/* Typing Indicator */
+.sp-typing {
+  font-style: italic;
+  font-size: 12px;
+  color: #64748b;
+  margin-left: 4px;
+}
+
+/* Input Area */
+.sp-chat-input-container {
+  padding: 16px;
+  border-top: 1px solid var(--sp-border);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.sp-input-wrapper {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--sp-border);
+  border-radius: 14px;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+}
+
+#sp-chat-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 8px 12px;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+}
+
+#sp-chat-send {
+  background: var(--sp-cyan);
+  color: #000;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+#sp-chat-send:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+#sp-chat-send:not(:disabled):hover {
+  transform: translateY(-1px);
+  filter: brightness(1.1);
+}
