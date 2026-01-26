@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# API Keys & Secrets (CRITICAL - DO NOT COMMIT)
+public/api/config.php
+.env.local
+.env
