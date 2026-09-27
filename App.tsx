@@ -1,7 +1,7 @@
 import { motion, useScroll, useSpring } from 'framer-motion';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import ServiceStages from './components/ServiceStages';
+import Pricing from './components/Pricing';
 import CaseStudies from './components/CaseStudies';
 import Team from './components/Team';
 import Contact from './components/Contact';
@@ -35,7 +35,7 @@ function App() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
         >
-          <ServiceStages />
+          <Pricing />
         </motion.div>
 
         <motion.div

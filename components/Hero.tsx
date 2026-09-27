@@ -32,7 +32,7 @@ const Hero: React.FC = () => {
             </h1>
             
             <p className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-              Créez et développez votre présence en ligne avec des solutions web sur mesure, de la création de sites à l'identité visuelle et au SEO.
+              Créez et développez votre présence en ligne avec des solutions web sur mesure, de la conception de maquettes à l'identité visuelle et au SEO.
             </p>
             
             <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
@@ -47,7 +47,7 @@ const Hero: React.FC = () => {
             <div className="mt-12 flex flex-wrap justify-center lg:justify-start gap-x-8 gap-y-4 text-gray-400 text-sm font-medium">
               <div className="flex items-center gap-2">
                 <CheckIcon className="w-5 h-5 text-brand-cyan" />
-                <span>Sites ultra-rapides</span>
+                <span>Maquettes haute-fidélité</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckIcon className="w-5 h-5 text-brand-purple" />

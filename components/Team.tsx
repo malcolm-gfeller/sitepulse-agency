@@ -1,5 +1,5 @@
 import React from 'react';
-import { LinkedInIcon } from '../icons';
+import { LinkedInIcon, GlobeIcon } from '../icons';
 import portrait from '../images/portrait.png';
 
 const Team: React.FC = () => {
@@ -22,7 +22,10 @@ const Team: React.FC = () => {
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               {/* Overlay with LinkedIn Icon */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-8">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-8 gap-4">
+                <a href="https://malcolm-gfeller.sitepulse.ch/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-brand-cyan transition-transform hover:scale-110">
+                  <GlobeIcon className="w-8 h-8" />
+                </a>
                 <a href="https://www.linkedin.com/in/malcolm-gfeller/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-brand-cyan transition-transform hover:scale-110">
                   <LinkedInIcon className="w-8 h-8" />
                 </a>

@@ -4,6 +4,7 @@ import { ArrowRightIcon } from '../icons';
 import nexusLogo from '../images/nexus-white-logo.png';
 import ceLogo from '../images/cearchitectesa-logo.png';
 import tukassiLogo from '../images/Logo-White-Transparent.png';
+import clinicaLogo from '../images/clinica-sonia-logo.png';
 
 const CaseStudyCard = ({ 
   company, 
@@ -15,10 +16,10 @@ const CaseStudyCard = ({
 }: { 
   company: string, 
   stat: string, 
-  variant?: 'cyan' | 'orange' | 'green' | 'purple',
+  variant?: 'cyan' | 'orange' | 'green' | 'purple' | 'gold' | 'blue',
   category: string,
   link: string,
-  logo: string
+  logo?: string
 }) => {
   
   // Color mappings for gradients and borders
@@ -46,6 +47,18 @@ const CaseStudyCard = ({
       glow: 'from-brand-purple/20',
       text: 'text-brand-purple',
       bg: 'hover:shadow-[0_0_50px_-12px_rgba(110,41,246,0.3)]'
+    },
+    gold: {
+      border: 'group-hover:border-yellow-600/50',
+      glow: 'from-yellow-600/20',
+      text: 'text-yellow-600',
+      bg: 'hover:shadow-[0_0_50px_-12px_rgba(202,138,4,0.3)]'
+    },
+    blue: {
+      border: 'group-hover:border-blue-500/50',
+      glow: 'from-blue-500/20',
+      text: 'text-blue-500',
+      bg: 'hover:shadow-[0_0_50px_-12px_rgba(59,130,246,0.3)]'
     },
   };
 
@@ -75,16 +88,22 @@ const CaseStudyCard = ({
       <div className="relative z-10 flex-grow flex items-center justify-center p-8 transition-transform duration-500 group-hover:-translate-y-8">
         <div className="relative">
            {/* Logo Container */}
-           <img 
-            src={logo} 
-            alt={company} 
-            className="w-auto h-auto max-h-24 max-w-[200px] object-contain opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 filter grayscale group-hover:grayscale-0" 
-          />
+           {logo ? (
+             <img 
+              src={logo} 
+              alt={company} 
+              className="w-auto h-auto max-h-24 max-w-[200px] object-contain opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 filter grayscale group-hover:grayscale-0" 
+            />
+           ) : (
+             <span className={`text-2xl md:text-3xl font-extrabold uppercase tracking-[0.2em] whitespace-nowrap text-center transition-all duration-500 group-hover:scale-110 text-white/80 group-hover:${currentStyle.text}`}>
+               {company}
+             </span>
+           )}
         </div>
       </div>
       
       {/* Bottom Section: Text Content */}
-      <div className="relative z-10 p-8 border-t border-white/5 bg-black/20 backdrop-blur-sm group-hover:border-white/10 transition-colors duration-300">
+      <div className="relative z-10 p-8 h-48 border-t border-white/5 bg-black/20 backdrop-blur-sm group-hover:border-white/10 transition-colors duration-300">
         <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
           <h4 className={`text-2xl font-bold text-white mb-3 leading-tight`}>
             {stat}
@@ -121,7 +140,7 @@ const CaseStudies: React.FC = () => {
             company="Nexus Production" 
             category="Web & Social"
             stat="Studio d'enregistrement : Site web & création de mails professionnels" 
-            variant="cyan"
+            variant="blue"
             link="https://nexusproduction.sitepulse.ch/"
             logo={nexusLogo}
           />
@@ -129,7 +148,7 @@ const CaseStudies: React.FC = () => {
             company="CE Architectes" 
             category="Architecture"
             stat="Solutions architecturales simples et percutantes" 
-            variant="orange"
+            variant="green"
             link="https://cearchitectesa.ch/"
             logo={ceLogo}
           />
@@ -138,8 +157,30 @@ const CaseStudies: React.FC = () => {
             category="E-commerce"
             stat="Boutique en ligne & Expérience digitale sur mesure" 
             variant="purple"
-            link="https://tukassi.ch/"
+            link="https://sitepulse.ch/Tukassi/"
             logo={tukassiLogo}
+          />
+          <CaseStudyCard 
+            company="Clínica Sónia dos Santos" 
+            category="Médecine Esthétique"
+            stat="Site web élégant pour clinique de médecine esthétique au Portugal" 
+            variant="gold"
+            link="https://clinicasoniadossantos.pt/"
+            logo={clinicaLogo}
+          />
+          <CaseStudyCard 
+            company="BARBER SHOP" 
+            category="Salon de Coiffure & Barbier"
+            stat="L'excellence masculine : Site web & Design pour un barber shop moderne" 
+            variant="gold"
+            link="https://sitepulse.ch/Barber-shop/"
+          />
+          <CaseStudyCard 
+            company="RESTAURANT CAFÉ" 
+            category="Restaurant & Gastronomie"
+            stat="L'art de la table : Site web élégant pour une expérience gastronomique" 
+            variant="gold"
+            link="https://sitepulse.ch/Restaurant-cafe/"
           />
         </div>
 

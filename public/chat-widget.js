@@ -3,9 +3,12 @@
 (function() {
     // 1. Configuration & State
     const CONFIG = {
-        apiEndpoint: '/api/chat',
+        apiEndpoint: '/api/chat', // Default for Vercel/Node
+        phpEndpoint: '/api/chat.php', // For Infomaniak/PHP hosting
         suggestedMessages: ["Qui est le fondateur ?", "Quels sont vos services ?"]
     };
+
+    let activeEndpoint = CONFIG.apiEndpoint;
 
     let chatHistory = [];
     let isOpen = false;
@@ -82,14 +85,29 @@
         messagesArea.appendChild(typingIndicator);
 
         try {
-            const response = await fetch(CONFIG.apiEndpoint, {
+            let response = await fetch(activeEndpoint, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ message: text, history: chatHistory })
             });
 
+            // If Node endpoint (default) returns HTML or 404, try PHP bridge
+            if (activeEndpoint === CONFIG.apiEndpoint && (!response.ok || response.headers.get('content-type').includes('text/html'))) {
+                console.log('Node endpoint unavailable, attempting PHP bridge...');
+                activeEndpoint = CONFIG.phpEndpoint;
+                response = await fetch(activeEndpoint, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: text, history: chatHistory })
+                });
+            }
+
             const data = await response.json();
-            messagesArea.removeChild(typingIndicator);
+            
+            // On retire l'indicateur une seule fois ici
+            if (messagesArea.contains(typingIndicator)) {
+                messagesArea.removeChild(typingIndicator);
+            }
 
             if (data.text) {
                 addMessage('assistant', data.text);
@@ -100,8 +118,11 @@
             }
         } catch (err) {
             console.error('Chat error:', err);
-            messagesArea.removeChild(typingIndicator);
-            addMessage('assistant', "Désolé, je rencontre une petite difficulté. Veuillez réessayer plus tard.");
+            // Sécurité si l'erreur arrive avant le removeChild du try
+            if (messagesArea.contains(typingIndicator)) {
+                messagesArea.removeChild(typingIndicator);
+            }
+            addMessage('assistant', "Désolé, je rencontre une petite difficulté (Quotas API). Veuillez réessayer d'ici quelques secondes.");
         } finally {
             sendBtn.disabled = false;
         }
